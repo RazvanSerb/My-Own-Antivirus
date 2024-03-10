@@ -1,0 +1,30 @@
+TASK1:
+- am citit url-urile din fisierul "urls.in" si le-am retinut pe rand in variabila "url"
+- pentru fiecare url:
+    -> am retinut domeniul url-ului analizat in variabila "url_domain"
+    -> am declarat o variabila "BEC" pe care am initializat-o cu valoarea 0
+    -> am deschis fisierul "domains_database"
+    -> am inceput cautarea in fisierul mentionat prin citirea domeniilor pe rand si retinerea lor in variabila "sir"
+    -> pentru fiecare domeniu din fisierul mentionat, am verificat daca se gaseste in componenta domeniului url-ului analizat
+    -> daca descopar un domeniu in fisier care se gaeste in componenta domeniului url-ului analizat, dau valoarea 1 variabilei "BEC" si opresc cautarea
+    -> am inchis fisierul "domains_database"
+    -> am verificat daca textele ".exe" sau ".bin" se gasesc in componenta url-ului analizat
+    -> daca descopar ca unul din aceste texte se gaseste in componenta url-ului analizar, dau valoarea 1 variabilei "BEC"
+    -> am inceputa cautarea pentru a verifica daca se afla vreo cifra in componenta domeniului url-ului analizat
+    -> daca descopar vreo cifra in componenta domeniului url-ului analizat, dau valoarea 1 variabilei "BEC" si opresc cautarea
+    -> am afisat valoarea variabilei "BEC" in fisierul "urls-predictions.out"
+TASK2:
+- am citit prima linie a fisierului CSV "traffic.in", reprezentand capul tabelului, si am retinut-o in variabila "sir"
+- am aflat numarul coloanelor din tabel unde sunt retinute informatii referitoare la "flow_duration" (in variabila "poz_fd") si "flow_pkts_payload.avg" (in variabila "poz_fppa")
+- apoi am citit informatiile din tabel linie cu linie
+- pentru fiecare linie cu informatii:
+    -> am extras informatiile corespunzatoare numarului coloanelor "flow_duration" si "flow_pkts_payload.avg"
+    -> in variabila "flow_duration" am retinut sirul de caractere de formatul "[] days [][].[][].[][].[][][][][][]"
+    -> in variabila "flow_pkts_payload_avg" am retinut numarul real corespunzator transformarii sirului de carcatere prin intermediul functiei "numar_char_to_double()" (creata de mine in C) / "float()" (in Python)
+    -> am verificat daca numarul retinut in "flow_pkts_payload_avg" e egal cu valoarea reala 0
+    -> daca numarul este egal, atunci vedem ce valori se gasesc pe pozitiile 0,7,8,10,11,13,14,15 din sirul de carcatere retinut in variabila "flow_duration"
+    -> daca pe vreuna din pozitiile 0,7,8,9,10,11,12 ae afla altceva decat caracterul '0', atunci dau valoarea 1 variabilei "BEC" si sar direct la afisare
+    -> daca pe pozitiile 13,14 se afla altceva decat caracterul '0', atunci dau valoarea 1 variabilei "BEC",
+       dar verific sa nu ma aflu pe cazul particular ("1 secunda") in care pe pozitia 13 sa se afle caracterul '0', pe pozitia 14 sa se afle '1', iar pozitia 14 sa fie ultima,
+       caz in care dau valoarea 0 variabilei "BEC"
+    -> am afisat valoarea variabilei "BEC" in fisierul "traffic-predictions.out"
